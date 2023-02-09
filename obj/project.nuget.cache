@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "44W0yNty7reBK2s5hAu0upjmkgEl00lvQUgx19CvNsZcN7tbrtoO9OoK6gpDdqo2UH2vliSZpGuhw796bZv4RQ==",
+  "success": true,
+  "projectFilePath": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
+  "expectedPackageFiles": [
+    "/home/desumn/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
