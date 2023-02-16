@@ -39,6 +39,16 @@
               "target": "Package",
               "version": "[7.0.0, )",
               "generatePathProperty": true
+            },
+            "FsLexYacc": {
+              "target": "Package",
+              "version": "[11.0.1, )",
+              "generatePathProperty": true
+            },
+            "FsLexYacc.Runtime": {
+              "target": "Package",
+              "version": "[11.0.1, )",
+              "generatePathProperty": true
             }
           },
           "imports": [

@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "44W0yNty7reBK2s5hAu0upjmkgEl00lvQUgx19CvNsZcN7tbrtoO9OoK6gpDdqo2UH2vliSZpGuhw796bZv4RQ==",
+  "dgSpecHash": "tFIHtV++70SdlbxFt6zjwDeGJKeQsfGdD9ftsSEwFixrTIrklsGTiqEZSLRvj4OhVZ4IvXSqheY1N0htKaM8VA==",
   "success": true,
   "projectFilePath": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
   "expectedPackageFiles": [
-    "/home/desumn/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512"
+    "/home/desumn/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512",
+    "/home/desumn/.nuget/packages/fslexyacc/11.0.1/fslexyacc.11.0.1.nupkg.sha512",
+    "/home/desumn/.nuget/packages/fslexyacc.runtime/11.0.1/fslexyacc.runtime.11.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,0 +1,25 @@
+------------------------
+states = 
+state 0:  items:    _startstart ->  . start
+  actions:    action 'EOF' (noprec):   shift 2
+    action 'Identifier' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+  immediate action: <none>  gotos:    goto start: 1
+state 1:  items:    _startstart -> start . 
+  actions:    action 'EOF' (noprec):   accept
+    action 'Identifier' (noprec):   accept
+    action 'error' (noprec):   accept
+    action '#' (noprec):   accept
+    action '$$' (noprec):   accept
+  immediate action:   accept  gotos:state 2:  items:    start -> 'EOF' . 
+  actions:    action 'EOF' (noprec):   reduce start --> 'EOF'
+    action 'Identifier' (noprec):   reduce start --> 'EOF'
+    action 'error' (noprec):   reduce start --> 'EOF'
+    action '#' (noprec):   reduce start --> 'EOF'
+    action '$$' (noprec):   reduce start --> 'EOF'
+  immediate action:   reduce start --> 'EOF'  gotos:
+startStates = 0
+------------------------
+        Output file describing compiled parser placed in Parser.fs and Parser.fsi

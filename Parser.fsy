@@ -1,0 +1,15 @@
+%{
+
+
+%}
+
+
+%start start
+%token < string > Identifier
+%token EOF
+
+%type < string > start
+
+%% 
+
+start: EOF { "" }
