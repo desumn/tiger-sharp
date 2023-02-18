@@ -5,10 +5,73 @@
 
 
 %start start
-%token < string > Identifier
+
+// Keywords 
+
+%token Type 
+%token Var
+%token Function
+%token Break
+%token Of
+%token End
+%token In
+%token Nil
+%token Let
+%token Do
+%token To
+%token For
+%token While
+%token Else
+%token Then
+%token If
+%token Array
+%token Assign
+
+// Logical Operators
+
+%token Or
+%token And
+%token GE
+%token GT
+%token LE
+%token LT
+%token Neq
+%token Eq
+
+// Arithmetic Operators
+
+%token Divide
+%token Times
+%token Plus
+%token Minus
+%token Dot
+
+// Paren and friends (delimiters)
+
+%token LBrace
+%token RBrace 
+%token LBrack
+%token RBrack
+%token LParen
+%token RParen
+
+// Punctuation
+
+%token Semicolon
+%token Colon
+%token Comma
+
+// Literals
+
+%token <string> String
+%token <int> Int
+
+// Special 
+
+%token <string> Identifier
 %token EOF
 
-%type < string > start
+%type <string> start
 
 %% 
 

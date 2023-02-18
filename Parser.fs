@@ -12,11 +12,95 @@ open FSharp.Text.Parsing.ParseHelpers
 // This type is the type of tokens accepted by the parser
 type token = 
   | EOF
-  | Identifier of ( string )
+  | Identifier of (string)
+  | Int of (int)
+  | String of (string)
+  | Comma
+  | Colon
+  | Semicolon
+  | RParen
+  | LParen
+  | RBrack
+  | LBrack
+  | RBrace
+  | LBrace
+  | Dot
+  | Minus
+  | Plus
+  | Times
+  | Divide
+  | Eq
+  | Neq
+  | LT
+  | LE
+  | GT
+  | GE
+  | And
+  | Or
+  | Assign
+  | Array
+  | If
+  | Then
+  | Else
+  | While
+  | For
+  | To
+  | Do
+  | Let
+  | Nil
+  | In
+  | End
+  | Of
+  | Break
+  | Function
+  | Var
+  | Type
 // This type is used to give symbolic names to token indexes, useful for error messages
 type tokenId = 
     | TOKEN_EOF
     | TOKEN_Identifier
+    | TOKEN_Int
+    | TOKEN_String
+    | TOKEN_Comma
+    | TOKEN_Colon
+    | TOKEN_Semicolon
+    | TOKEN_RParen
+    | TOKEN_LParen
+    | TOKEN_RBrack
+    | TOKEN_LBrack
+    | TOKEN_RBrace
+    | TOKEN_LBrace
+    | TOKEN_Dot
+    | TOKEN_Minus
+    | TOKEN_Plus
+    | TOKEN_Times
+    | TOKEN_Divide
+    | TOKEN_Eq
+    | TOKEN_Neq
+    | TOKEN_LT
+    | TOKEN_LE
+    | TOKEN_GT
+    | TOKEN_GE
+    | TOKEN_And
+    | TOKEN_Or
+    | TOKEN_Assign
+    | TOKEN_Array
+    | TOKEN_If
+    | TOKEN_Then
+    | TOKEN_Else
+    | TOKEN_While
+    | TOKEN_For
+    | TOKEN_To
+    | TOKEN_Do
+    | TOKEN_Let
+    | TOKEN_Nil
+    | TOKEN_In
+    | TOKEN_End
+    | TOKEN_Of
+    | TOKEN_Break
+    | TOKEN_Function
+    | TOKEN_Var
+    | TOKEN_Type
     | TOKEN_end_of_input
     | TOKEN_error
 // This type is used to give symbolic names to token indexes, useful for error messages
@@ -29,14 +113,98 @@ let tagOfToken (t:token) =
   match t with
   | EOF  -> 0 
   | Identifier _ -> 1 
+  | Int _ -> 2 
+  | String _ -> 3 
+  | Comma  -> 4 
+  | Colon  -> 5 
+  | Semicolon  -> 6 
+  | RParen  -> 7 
+  | LParen  -> 8 
+  | RBrack  -> 9 
+  | LBrack  -> 10 
+  | RBrace  -> 11 
+  | LBrace  -> 12 
+  | Dot  -> 13 
+  | Minus  -> 14 
+  | Plus  -> 15 
+  | Times  -> 16 
+  | Divide  -> 17 
+  | Eq  -> 18 
+  | Neq  -> 19 
+  | LT  -> 20 
+  | LE  -> 21 
+  | GT  -> 22 
+  | GE  -> 23 
+  | And  -> 24 
+  | Or  -> 25 
+  | Assign  -> 26 
+  | Array  -> 27 
+  | If  -> 28 
+  | Then  -> 29 
+  | Else  -> 30 
+  | While  -> 31 
+  | For  -> 32 
+  | To  -> 33 
+  | Do  -> 34 
+  | Let  -> 35 
+  | Nil  -> 36 
+  | In  -> 37 
+  | End  -> 38 
+  | Of  -> 39 
+  | Break  -> 40 
+  | Function  -> 41 
+  | Var  -> 42 
+  | Type  -> 43 
 
 // This function maps integer indexes to symbolic token ids
 let tokenTagToTokenId (tokenIdx:int) = 
   match tokenIdx with
   | 0 -> TOKEN_EOF 
   | 1 -> TOKEN_Identifier 
-  | 4 -> TOKEN_end_of_input
-  | 2 -> TOKEN_error
+  | 2 -> TOKEN_Int 
+  | 3 -> TOKEN_String 
+  | 4 -> TOKEN_Comma 
+  | 5 -> TOKEN_Colon 
+  | 6 -> TOKEN_Semicolon 
+  | 7 -> TOKEN_RParen 
+  | 8 -> TOKEN_LParen 
+  | 9 -> TOKEN_RBrack 
+  | 10 -> TOKEN_LBrack 
+  | 11 -> TOKEN_RBrace 
+  | 12 -> TOKEN_LBrace 
+  | 13 -> TOKEN_Dot 
+  | 14 -> TOKEN_Minus 
+  | 15 -> TOKEN_Plus 
+  | 16 -> TOKEN_Times 
+  | 17 -> TOKEN_Divide 
+  | 18 -> TOKEN_Eq 
+  | 19 -> TOKEN_Neq 
+  | 20 -> TOKEN_LT 
+  | 21 -> TOKEN_LE 
+  | 22 -> TOKEN_GT 
+  | 23 -> TOKEN_GE 
+  | 24 -> TOKEN_And 
+  | 25 -> TOKEN_Or 
+  | 26 -> TOKEN_Assign 
+  | 27 -> TOKEN_Array 
+  | 28 -> TOKEN_If 
+  | 29 -> TOKEN_Then 
+  | 30 -> TOKEN_Else 
+  | 31 -> TOKEN_While 
+  | 32 -> TOKEN_For 
+  | 33 -> TOKEN_To 
+  | 34 -> TOKEN_Do 
+  | 35 -> TOKEN_Let 
+  | 36 -> TOKEN_Nil 
+  | 37 -> TOKEN_In 
+  | 38 -> TOKEN_End 
+  | 39 -> TOKEN_Of 
+  | 40 -> TOKEN_Break 
+  | 41 -> TOKEN_Function 
+  | 42 -> TOKEN_Var 
+  | 43 -> TOKEN_Type 
+  | 46 -> TOKEN_end_of_input
+  | 44 -> TOKEN_error
   | _ -> failwith "tokenTagToTokenId: bad token"
 
 /// This function maps production indexes returned in syntax errors to strings representing the non terminal that would be produced by that production
@@ -46,20 +214,104 @@ let prodIdxToNonTerminal (prodIdx:int) =
     | 1 -> NONTERM_start 
     | _ -> failwith "prodIdxToNonTerminal: bad production index"
 
-let _fsyacc_endOfInputTag = 4 
-let _fsyacc_tagOfErrorTerminal = 2
+let _fsyacc_endOfInputTag = 46 
+let _fsyacc_tagOfErrorTerminal = 44
 
 // This function gets the name of a token as a string
 let token_to_string (t:token) = 
   match t with 
   | EOF  -> "EOF" 
   | Identifier _ -> "Identifier" 
+  | Int _ -> "Int" 
+  | String _ -> "String" 
+  | Comma  -> "Comma" 
+  | Colon  -> "Colon" 
+  | Semicolon  -> "Semicolon" 
+  | RParen  -> "RParen" 
+  | LParen  -> "LParen" 
+  | RBrack  -> "RBrack" 
+  | LBrack  -> "LBrack" 
+  | RBrace  -> "RBrace" 
+  | LBrace  -> "LBrace" 
+  | Dot  -> "Dot" 
+  | Minus  -> "Minus" 
+  | Plus  -> "Plus" 
+  | Times  -> "Times" 
+  | Divide  -> "Divide" 
+  | Eq  -> "Eq" 
+  | Neq  -> "Neq" 
+  | LT  -> "LT" 
+  | LE  -> "LE" 
+  | GT  -> "GT" 
+  | GE  -> "GE" 
+  | And  -> "And" 
+  | Or  -> "Or" 
+  | Assign  -> "Assign" 
+  | Array  -> "Array" 
+  | If  -> "If" 
+  | Then  -> "Then" 
+  | Else  -> "Else" 
+  | While  -> "While" 
+  | For  -> "For" 
+  | To  -> "To" 
+  | Do  -> "Do" 
+  | Let  -> "Let" 
+  | Nil  -> "Nil" 
+  | In  -> "In" 
+  | End  -> "End" 
+  | Of  -> "Of" 
+  | Break  -> "Break" 
+  | Function  -> "Function" 
+  | Var  -> "Var" 
+  | Type  -> "Type" 
 
 // This function gets the data carried by a token as an object
 let _fsyacc_dataOfToken (t:token) = 
   match t with 
   | EOF  -> (null : System.Object) 
   | Identifier _fsyacc_x -> Microsoft.FSharp.Core.Operators.box _fsyacc_x 
+  | Int _fsyacc_x -> Microsoft.FSharp.Core.Operators.box _fsyacc_x 
+  | String _fsyacc_x -> Microsoft.FSharp.Core.Operators.box _fsyacc_x 
+  | Comma  -> (null : System.Object) 
+  | Colon  -> (null : System.Object) 
+  | Semicolon  -> (null : System.Object) 
+  | RParen  -> (null : System.Object) 
+  | LParen  -> (null : System.Object) 
+  | RBrack  -> (null : System.Object) 
+  | LBrack  -> (null : System.Object) 
+  | RBrace  -> (null : System.Object) 
+  | LBrace  -> (null : System.Object) 
+  | Dot  -> (null : System.Object) 
+  | Minus  -> (null : System.Object) 
+  | Plus  -> (null : System.Object) 
+  | Times  -> (null : System.Object) 
+  | Divide  -> (null : System.Object) 
+  | Eq  -> (null : System.Object) 
+  | Neq  -> (null : System.Object) 
+  | LT  -> (null : System.Object) 
+  | LE  -> (null : System.Object) 
+  | GT  -> (null : System.Object) 
+  | GE  -> (null : System.Object) 
+  | And  -> (null : System.Object) 
+  | Or  -> (null : System.Object) 
+  | Assign  -> (null : System.Object) 
+  | Array  -> (null : System.Object) 
+  | If  -> (null : System.Object) 
+  | Then  -> (null : System.Object) 
+  | Else  -> (null : System.Object) 
+  | While  -> (null : System.Object) 
+  | For  -> (null : System.Object) 
+  | To  -> (null : System.Object) 
+  | Do  -> (null : System.Object) 
+  | Let  -> (null : System.Object) 
+  | Nil  -> (null : System.Object) 
+  | In  -> (null : System.Object) 
+  | End  -> (null : System.Object) 
+  | Of  -> (null : System.Object) 
+  | Break  -> (null : System.Object) 
+  | Function  -> (null : System.Object) 
+  | Var  -> (null : System.Object) 
+  | Type  -> (null : System.Object) 
 let _fsyacc_gotos = [| 0us;65535us;1us;65535us;0us;1us;|]
 let _fsyacc_sparseGotoTableRowOffsets = [|0us;1us;|]
 let _fsyacc_stateToProdIdxsTableElements = [| 1us;0us;1us;0us;1us;1us;|]
@@ -71,27 +323,27 @@ let _fsyacc_reductionSymbolCounts = [|1us;1us;|]
 let _fsyacc_productionToNonTerminalTable = [|0us;1us;|]
 let _fsyacc_immediateActions = [|65535us;49152us;16385us;|]
 let _fsyacc_reductions = lazy [|
-# 74 "Parser.fs"
+# 326 "Parser.fs"
         (fun (parseState : FSharp.Text.Parsing.IParseState) ->
-            let _1 = parseState.GetInput(1) :?>  string  in
+            let _1 = parseState.GetInput(1) :?> string in
             Microsoft.FSharp.Core.Operators.box
                 (
                    (
                       raise (FSharp.Text.Parsing.Accept(Microsoft.FSharp.Core.Operators.box _1))
                    )
                  : 'gentype__startstart));
-# 83 "Parser.fs"
+# 335 "Parser.fs"
         (fun (parseState : FSharp.Text.Parsing.IParseState) ->
             Microsoft.FSharp.Core.Operators.box
                 (
                    (
-# 15 "Parser.fsy"
+# 78 "Parser.fsy"
                                   "" 
                    )
-# 15 "Parser.fsy"
-                 :  string ));
+# 78 "Parser.fsy"
+                 : string));
 |]
-# 94 "Parser.fs"
+# 346 "Parser.fs"
 let tables : FSharp.Text.Parsing.Tables<_> = 
   { reductions = _fsyacc_reductions.Value;
     endOfInputTag = _fsyacc_endOfInputTag;
@@ -110,8 +362,8 @@ let tables : FSharp.Text.Parsing.Tables<_> =
                               match parse_error_rich with 
                               | Some f -> f ctxt
                               | None -> parse_error ctxt.Message);
-    numTerminals = 5;
+    numTerminals = 47;
     productionToNonTerminalTable = _fsyacc_productionToNonTerminalTable  }
 let engine lexer lexbuf startState = tables.Interpret(lexer, lexbuf, startState)
-let start lexer lexbuf :  string  =
+let start lexer lexbuf : string =
     engine lexer lexbuf 0 :?> _

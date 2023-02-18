@@ -2,10 +2,94 @@
 module Parser
 type token = 
   | EOF
-  | Identifier of ( string )
+  | Identifier of (string)
+  | Int of (int)
+  | String of (string)
+  | Comma
+  | Colon
+  | Semicolon
+  | RParen
+  | LParen
+  | RBrack
+  | LBrack
+  | RBrace
+  | LBrace
+  | Dot
+  | Minus
+  | Plus
+  | Times
+  | Divide
+  | Eq
+  | Neq
+  | LT
+  | LE
+  | GT
+  | GE
+  | And
+  | Or
+  | Assign
+  | Array
+  | If
+  | Then
+  | Else
+  | While
+  | For
+  | To
+  | Do
+  | Let
+  | Nil
+  | In
+  | End
+  | Of
+  | Break
+  | Function
+  | Var
+  | Type
 type tokenId = 
     | TOKEN_EOF
     | TOKEN_Identifier
+    | TOKEN_Int
+    | TOKEN_String
+    | TOKEN_Comma
+    | TOKEN_Colon
+    | TOKEN_Semicolon
+    | TOKEN_RParen
+    | TOKEN_LParen
+    | TOKEN_RBrack
+    | TOKEN_LBrack
+    | TOKEN_RBrace
+    | TOKEN_LBrace
+    | TOKEN_Dot
+    | TOKEN_Minus
+    | TOKEN_Plus
+    | TOKEN_Times
+    | TOKEN_Divide
+    | TOKEN_Eq
+    | TOKEN_Neq
+    | TOKEN_LT
+    | TOKEN_LE
+    | TOKEN_GT
+    | TOKEN_GE
+    | TOKEN_And
+    | TOKEN_Or
+    | TOKEN_Assign
+    | TOKEN_Array
+    | TOKEN_If
+    | TOKEN_Then
+    | TOKEN_Else
+    | TOKEN_While
+    | TOKEN_For
+    | TOKEN_To
+    | TOKEN_Do
+    | TOKEN_Let
+    | TOKEN_Nil
+    | TOKEN_In
+    | TOKEN_End
+    | TOKEN_Of
+    | TOKEN_Break
+    | TOKEN_Function
+    | TOKEN_Var
+    | TOKEN_Type
     | TOKEN_end_of_input
     | TOKEN_error
 type nonTerminalId = 
@@ -22,4 +106,4 @@ val prodIdxToNonTerminal: int -> nonTerminalId
 
 /// This function gets the name of a token as a string
 val token_to_string: token -> string
-val start : (FSharp.Text.Lexing.LexBuffer<'cty> -> token) -> FSharp.Text.Lexing.LexBuffer<'cty> -> ( string ) 
+val start : (FSharp.Text.Lexing.LexBuffer<'cty> -> token) -> FSharp.Text.Lexing.LexBuffer<'cty> -> (string) 

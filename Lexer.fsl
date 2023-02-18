@@ -3,12 +3,58 @@ open FSharp.Text.Lexing
 open Parser 
 }
 
+let whitespaces = [' ' '\t']
 let lowercase = ['a'-'z']
 let uppercase = ['A'-'Z']
 let digits = ['0'-'9']
 
 let ident = (lowercase | uppercase)(lowercase | uppercase | digits | '_')+
 
-rule lexer_main = parse
-    | ident {Identifier(string lexbuf.Lexeme)}
+rule lexer_main lstring = parse
+    | "type" {Type}
+    | "var" {Var}
+    | "function" {Function}
+    | "break" {Break}
+    | "of" {Of}
+    | "end" {End}
+    | "in" {In}
+    | "nil" {Nil}
+    | "let" {Let}
+    | "do" {Do}
+    | "to" {To}
+    | "for" {For}
+    | "while" {While}
+    | "else" {Else}
+    | "then" {Then}
+    | "if" {If}
+    | "array" {Array}
+    | ":=" {Assign}
+    | "or" {Or}
+    | "and" {And}
+    | ">=" {GE}
+    | ">" {GT}
+    | "<=" {LE}
+    | "<"  {LT}
+    | "<>" {Neq}
+    | "=" {Eq}
+    | "/" {Divide}
+    | "*" {Times}
+    | "+" {Plus}
+    | "-" {Minus}
+    | "." {Dot}
+    | "{" {LBrace}
+    | "}" {RBrace}
+    | "[" {LBrack}
+    | "]" {RBrack}
+    | "(" {LParen}
+    | ")" {RParen}
+    | ";" {Semicolon}
+    | ":" {Colon}
+    | "," {Comma}
+    | digits* { Int(System.String(lexbuf.Lexeme) |> int) }
+    | '"' {String(lstring)}
+    | ident {Identifier(System.String(lexbuf.Lexeme))}
     | eof { EOF }
+and lexer_string lstring = parse
+    | '"' { lexer_main lstring lexbuf}
+    | [ ^ '\n' '"' ]* {lexer_string "" lexbuf}

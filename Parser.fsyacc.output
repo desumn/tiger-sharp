@@ -3,6 +3,48 @@ states =
 state 0:  items:    _startstart ->  . start
   actions:    action 'EOF' (noprec):   shift 2
     action 'Identifier' (noprec):   error
+    action 'Int' (noprec):   error
+    action 'String' (noprec):   error
+    action 'Comma' (noprec):   error
+    action 'Colon' (noprec):   error
+    action 'Semicolon' (noprec):   error
+    action 'RParen' (noprec):   error
+    action 'LParen' (noprec):   error
+    action 'RBrack' (noprec):   error
+    action 'LBrack' (noprec):   error
+    action 'RBrace' (noprec):   error
+    action 'LBrace' (noprec):   error
+    action 'Dot' (noprec):   error
+    action 'Minus' (noprec):   error
+    action 'Plus' (noprec):   error
+    action 'Times' (noprec):   error
+    action 'Divide' (noprec):   error
+    action 'Eq' (noprec):   error
+    action 'Neq' (noprec):   error
+    action 'LT' (noprec):   error
+    action 'LE' (noprec):   error
+    action 'GT' (noprec):   error
+    action 'GE' (noprec):   error
+    action 'And' (noprec):   error
+    action 'Or' (noprec):   error
+    action 'Assign' (noprec):   error
+    action 'Array' (noprec):   error
+    action 'If' (noprec):   error
+    action 'Then' (noprec):   error
+    action 'Else' (noprec):   error
+    action 'While' (noprec):   error
+    action 'For' (noprec):   error
+    action 'To' (noprec):   error
+    action 'Do' (noprec):   error
+    action 'Let' (noprec):   error
+    action 'Nil' (noprec):   error
+    action 'In' (noprec):   error
+    action 'End' (noprec):   error
+    action 'Of' (noprec):   error
+    action 'Break' (noprec):   error
+    action 'Function' (noprec):   error
+    action 'Var' (noprec):   error
+    action 'Type' (noprec):   error
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -10,12 +52,96 @@ state 0:  items:    _startstart ->  . start
 state 1:  items:    _startstart -> start . 
   actions:    action 'EOF' (noprec):   accept
     action 'Identifier' (noprec):   accept
+    action 'Int' (noprec):   accept
+    action 'String' (noprec):   accept
+    action 'Comma' (noprec):   accept
+    action 'Colon' (noprec):   accept
+    action 'Semicolon' (noprec):   accept
+    action 'RParen' (noprec):   accept
+    action 'LParen' (noprec):   accept
+    action 'RBrack' (noprec):   accept
+    action 'LBrack' (noprec):   accept
+    action 'RBrace' (noprec):   accept
+    action 'LBrace' (noprec):   accept
+    action 'Dot' (noprec):   accept
+    action 'Minus' (noprec):   accept
+    action 'Plus' (noprec):   accept
+    action 'Times' (noprec):   accept
+    action 'Divide' (noprec):   accept
+    action 'Eq' (noprec):   accept
+    action 'Neq' (noprec):   accept
+    action 'LT' (noprec):   accept
+    action 'LE' (noprec):   accept
+    action 'GT' (noprec):   accept
+    action 'GE' (noprec):   accept
+    action 'And' (noprec):   accept
+    action 'Or' (noprec):   accept
+    action 'Assign' (noprec):   accept
+    action 'Array' (noprec):   accept
+    action 'If' (noprec):   accept
+    action 'Then' (noprec):   accept
+    action 'Else' (noprec):   accept
+    action 'While' (noprec):   accept
+    action 'For' (noprec):   accept
+    action 'To' (noprec):   accept
+    action 'Do' (noprec):   accept
+    action 'Let' (noprec):   accept
+    action 'Nil' (noprec):   accept
+    action 'In' (noprec):   accept
+    action 'End' (noprec):   accept
+    action 'Of' (noprec):   accept
+    action 'Break' (noprec):   accept
+    action 'Function' (noprec):   accept
+    action 'Var' (noprec):   accept
+    action 'Type' (noprec):   accept
     action 'error' (noprec):   accept
     action '#' (noprec):   accept
     action '$$' (noprec):   accept
   immediate action:   accept  gotos:state 2:  items:    start -> 'EOF' . 
   actions:    action 'EOF' (noprec):   reduce start --> 'EOF'
     action 'Identifier' (noprec):   reduce start --> 'EOF'
+    action 'Int' (noprec):   reduce start --> 'EOF'
+    action 'String' (noprec):   reduce start --> 'EOF'
+    action 'Comma' (noprec):   reduce start --> 'EOF'
+    action 'Colon' (noprec):   reduce start --> 'EOF'
+    action 'Semicolon' (noprec):   reduce start --> 'EOF'
+    action 'RParen' (noprec):   reduce start --> 'EOF'
+    action 'LParen' (noprec):   reduce start --> 'EOF'
+    action 'RBrack' (noprec):   reduce start --> 'EOF'
+    action 'LBrack' (noprec):   reduce start --> 'EOF'
+    action 'RBrace' (noprec):   reduce start --> 'EOF'
+    action 'LBrace' (noprec):   reduce start --> 'EOF'
+    action 'Dot' (noprec):   reduce start --> 'EOF'
+    action 'Minus' (noprec):   reduce start --> 'EOF'
+    action 'Plus' (noprec):   reduce start --> 'EOF'
+    action 'Times' (noprec):   reduce start --> 'EOF'
+    action 'Divide' (noprec):   reduce start --> 'EOF'
+    action 'Eq' (noprec):   reduce start --> 'EOF'
+    action 'Neq' (noprec):   reduce start --> 'EOF'
+    action 'LT' (noprec):   reduce start --> 'EOF'
+    action 'LE' (noprec):   reduce start --> 'EOF'
+    action 'GT' (noprec):   reduce start --> 'EOF'
+    action 'GE' (noprec):   reduce start --> 'EOF'
+    action 'And' (noprec):   reduce start --> 'EOF'
+    action 'Or' (noprec):   reduce start --> 'EOF'
+    action 'Assign' (noprec):   reduce start --> 'EOF'
+    action 'Array' (noprec):   reduce start --> 'EOF'
+    action 'If' (noprec):   reduce start --> 'EOF'
+    action 'Then' (noprec):   reduce start --> 'EOF'
+    action 'Else' (noprec):   reduce start --> 'EOF'
+    action 'While' (noprec):   reduce start --> 'EOF'
+    action 'For' (noprec):   reduce start --> 'EOF'
+    action 'To' (noprec):   reduce start --> 'EOF'
+    action 'Do' (noprec):   reduce start --> 'EOF'
+    action 'Let' (noprec):   reduce start --> 'EOF'
+    action 'Nil' (noprec):   reduce start --> 'EOF'
+    action 'In' (noprec):   reduce start --> 'EOF'
+    action 'End' (noprec):   reduce start --> 'EOF'
+    action 'Of' (noprec):   reduce start --> 'EOF'
+    action 'Break' (noprec):   reduce start --> 'EOF'
+    action 'Function' (noprec):   reduce start --> 'EOF'
+    action 'Var' (noprec):   reduce start --> 'EOF'
+    action 'Type' (noprec):   reduce start --> 'EOF'
     action 'error' (noprec):   reduce start --> 'EOF'
     action '#' (noprec):   reduce start --> 'EOF'
     action '$$' (noprec):   reduce start --> 'EOF'
