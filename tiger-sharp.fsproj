@@ -20,5 +20,5 @@
     <PackageReference Include="FsLexYacc" Version="11.0.1" />
     <PackageReference Include="FsLexYacc.Runtime" Version="11.0.1" />
   </ItemGroup>
-  <Import Project="..\.nuget\packages\fslexyacc\11.0.1\build\FsLexYacc.targets" />
+  <Import Project="..\..\.nuget\packages\fslexyacc\11.0.1\build\FsLexYacc.targets" />
 </Project>

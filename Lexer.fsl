@@ -10,7 +10,8 @@ let digits = ['0'-'9']
 
 let ident = (lowercase | uppercase)(lowercase | uppercase | digits | '_')+
 
-rule lexer_main lstring = parse
+rule lexer_main = parse
+    | whitespaces {lexer_main lexbuf}
     | "type" {Type}
     | "var" {Var}
     | "function" {Function}
@@ -52,9 +53,12 @@ rule lexer_main lstring = parse
     | ":" {Colon}
     | "," {Comma}
     | digits* { Int(System.String(lexbuf.Lexeme) |> int) }
-    | '"' {String(lstring)}
+    | '"' {lexer_string "" lexbuf} 
     | ident {Identifier(System.String(lexbuf.Lexeme))}
     | eof { EOF }
 and lexer_string lstring = parse
-    | '"' { lexer_main lstring lexbuf}
-    | [ ^ '\n' '"' ]* {lexer_string "" lexbuf}
+    | '"' {String(lstring)}
+    | "\n" {lexer_string(lstring + "\n") lexbuf}
+    | "\t" {lexer_string(lstring + "\t") lexbuf}
+    | "\\"(digits)(digits)(digits) { lexer_string (lstring + (System.String(lexbuf.Lexeme).Substring(1) |> int |> char |> string)) lexbuf }
+    | ident* {lexer_string (lstring + System.String(lexbuf.Lexeme)) lexbuf}

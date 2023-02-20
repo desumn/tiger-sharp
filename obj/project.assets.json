@@ -86,11 +86,12 @@
   },
   "libraries": {
     "FSharp.Core/7.0.0": {
-      "sha512": "6sspNqpGdrEQIn7k0xnvHXymx1WDfWbAu4q0368pEYfAb6Pj/6HTUvWnmVG/4G8X55x5ff08qgkHWO6/pFKx2g==",
+      "sha512": "8hzwUheAViWMAHWQTr6kR/19C4LhjZ4TlftKfNeZO9y7XnRUzLTK6FJS1C+0oObuUe0e4KndYxjWE+Zgea9YXQ==",
       "type": "package",
       "path": "fsharp.core/7.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "Icon.png",
         "fsharp.core.7.0.0.nupkg.sha512",
         "fsharp.core.nuspec",
@@ -233,25 +234,25 @@
     ]
   },
   "packageFolders": {
-    "/home/desumn/.nuget/packages/": {}
+    "C:\\Users\\yugam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
+      "projectUniqueName": "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj",
       "projectName": "tiger-sharp",
-      "projectPath": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
-      "packagesPath": "/home/desumn/.nuget/packages/",
-      "outputPath": "/home/desumn/tiger-sharp/obj/",
+      "projectPath": "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj",
+      "packagesPath": "C:\\Users\\yugam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yugam\\Projets\\tiger-sharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/desumn/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\yugam\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/lib64/dotnet/sdk/7.0.102/FSharp/library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.102\\FSharp\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -298,7 +299,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/home/desumn/tiger-sharp/tiger-sharp.fsproj": {}
+    "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj": {}
   },
   "projects": {
-    "/home/desumn/tiger-sharp/tiger-sharp.fsproj": {
+    "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
+        "projectUniqueName": "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj",
         "projectName": "tiger-sharp",
-        "projectPath": "/home/desumn/tiger-sharp/tiger-sharp.fsproj",
-        "packagesPath": "/home/desumn/.nuget/packages/",
-        "outputPath": "/home/desumn/tiger-sharp/obj/",
+        "projectPath": "C:\\Users\\yugam\\Projets\\tiger-sharp\\tiger-sharp.fsproj",
+        "packagesPath": "C:\\Users\\yugam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yugam\\Projets\\tiger-sharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/desumn/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\yugam\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/sdk/7.0.102/FSharp/library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.102\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
